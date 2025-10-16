@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
+import Footer from "./components/Footer";
 
 function App() {
   const [time, setTime] = useState(new Date());
   const [darkMode, setDarkMode] = useState(true);
 
-  // Update waktu setiap detik
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour >= 6 && hour < 18) setDarkMode(false);
+    else setDarkMode(true);
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  // Format waktu & tanggal
   const formattedTime = time.toLocaleTimeString("id-ID", {
     hour: "2-digit",
     minute: "2-digit",
@@ -26,34 +31,41 @@ function App() {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center min-h-screen transition-colors duration-700 ${
+      className={`flex flex-col items-center justify-center min-h-screen transition-all duration-1000 overflow-hidden ${
         darkMode
-          ? "bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white"
-          : "bg-gradient-to-br from-gray-100 via-slate-200 to-gray-100 text-gray-900"
-      } font-sans`}
+          ? "bg-gradient-to-br from-gray-900 via-indigo-900 to-black text-white"
+          : "bg-gradient-to-br from-sky-200 via-blue-300 to-indigo-200 text-gray-900"
+      }`}
     >
-      {/* Efek Glow Latar */}
       <div
-        className={`absolute w-[400px] h-[400px] rounded-full blur-3xl -z-10 animate-pulse transition-colors duration-700 ${
-          darkMode ? "bg-indigo-500/30" : "bg-blue-300/40"
+        className={`absolute w-[450px] h-[450px] rounded-full blur-3xl opacity-40 -z-10 transition-all duration-700 animate-pulse ${
+          darkMode
+            ? "bg-indigo-500/40 top-1/3 left-1/3"
+            : "bg-sky-400/50 top-1/3 left-1/3"
         }`}
       ></div>
 
-      {/* Tombol Toggle */}
+      <div
+        className={`absolute w-[600px] h-[600px] rounded-full blur-[120px] opacity-30 -z-20 transition-all duration-700 ${
+          darkMode
+            ? "bg-purple-700/30 bottom-10 right-10"
+            : "bg-indigo-300/40 bottom-10 right-10"
+        }`}
+      ></div>
+
       <button
         onClick={() => setDarkMode(!darkMode)}
-        className={`absolute top-5 right-5 px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-md transition-all duration-500 ${
+        className={`absolute top-6 right-6 px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-md border transition-all duration-500 ${
           darkMode
-            ? "bg-white/10 hover:bg-white/20 text-white border border-white/20"
-            : "bg-gray-800/10 hover:bg-gray-800/20 text-gray-800 border border-gray-400/30"
+            ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+            : "bg-white/70 border-gray-300 text-gray-800 hover:bg-white/80"
         }`}
       >
         {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
       </button>
 
-      {/* Jam Digital */}
       <div
-        className={`text-center p-10 rounded-2xl shadow-2xl backdrop-blur-lg border transition-all duration-700 ${
+        className={`text-center p-10 rounded-3xl shadow-2xl backdrop-blur-xl border transition-all duration-700 ${
           darkMode
             ? "bg-white/10 border-white/20"
             : "bg-white/60 border-gray-200"
@@ -62,7 +74,7 @@ function App() {
         <h1
           className={`text-6xl md:text-8xl font-mono tracking-widest mb-4 transition-all duration-700 ${
             darkMode
-              ? "drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+              ? "drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]"
               : "text-gray-800"
           }`}
         >
@@ -77,14 +89,7 @@ function App() {
         </p>
       </div>
 
-      {/* Footer */}
-      <footer
-        className={`absolute bottom-5 text-sm transition-colors duration-700 ${
-          darkMode ? "text-gray-500" : "text-gray-600"
-        }`}
-      >
-        Made with ❤️ using React + Tailwind
-      </footer>
+      <Footer darkMode={darkMode} />
     </div>
   );
 }
