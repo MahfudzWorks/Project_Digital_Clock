@@ -1,16 +1,51 @@
-# React + Vite
+# 🕒 Digital Clock - React + Vite + Tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **modern and responsive digital clock** built with **React**, **Vite**, and **Tailwind CSS**.  
+It features automatic **dark/light mode**, gradient backgrounds, soft glow effects, and a personal **footer component** with developer info.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- 🕐 Real-time digital clock (auto-updates every second)
+- 🌗 Dark & Light mode (auto + manual toggle)
+- 🎨 Beautiful gradient backgrounds with smooth transitions
+- 💡 Glow blur effects for a futuristic aesthetic
+- 📱 Fully responsive on desktop and mobile
+- 🧩 Modular component structure (separate Footer component)
+- ⚡ Built with Vite for ultra-fast dev experience
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧰 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React + Vite** — Frontend framework & build tool
+- **Tailwind CSS** — Styling and responsive layout
+- **JavaScript (ES6)** — Logic and hooks
+- **Google Fonts (Share Tech Mono)** — Digital-style typography
+
+---
+
+## 🧠 How It Works
+
+- The time updates every second using `setInterval` and `useEffect`.
+- Dark mode switches automatically based on system time (6 AM–6 PM = light mode).
+- You can toggle manually using the 🌙/☀️ button.
+- Background uses gradient colors and animated glow effects.
+- Footer component displays developer info and external links.
+
+---
+
+## 👤 Developer Info
+
+👋 **Mahfudz Alfanani Syaviqi**  
+🎓 _Fresh Graduate – Informatics Engineering @ Universitas Muhammadiyah Gresik (2025)_  
+💻 _Software Developer | Web Developer | Problem Solver_
+
+🌐 **Portfolio:** [vyyy.my.id](https://vyyy.my.id)  
+💾 **GitHub:** [github.com/vyyy404](https://github.com/vyyy404)  
+✉️ **Email:** [mahfudzworksss@gmail.com](mailto:mahfudzworksss@gmail.com)
+
+---
+
+© 2025 Mahfudz Alfanani Syaviqi. Built with 💙 using React, Vite, and Tailwind CSS.
