@@ -4,11 +4,11 @@ import Footer from "./components/Footer";
 function App() {
   const [time, setTime] = useState(new Date());
   const [darkMode, setDarkMode] = useState(true);
+  const [timezone, setTimezone] = useState("Asia/Jakarta");
 
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour >= 6 && hour < 18) setDarkMode(false);
-    else setDarkMode(true);
+    setDarkMode(!(hour >= 6 && hour < 18));
   }, []);
 
   useEffect(() => {
@@ -17,12 +17,14 @@ function App() {
   }, []);
 
   const formattedTime = time.toLocaleTimeString("id-ID", {
+    timeZone: timezone,
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
   });
 
   const formattedDate = time.toLocaleDateString("id-ID", {
+    timeZone: timezone,
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -81,12 +83,41 @@ function App() {
           {formattedTime}
         </h1>
         <p
-          className={`text-lg md:text-xl transition-opacity duration-700 ${
+          className={`text-lg md:text-xl mb-6 transition-opacity duration-700 ${
             darkMode ? "text-gray-300" : "text-gray-700"
           }`}
         >
           {formattedDate}
         </p>
+
+        <div className="flex flex-col items-center gap-2">
+          <label
+            htmlFor="timezone"
+            className={`text-sm font-medium ${
+              darkMode ? "text-gray-300" : "text-gray-700"
+            }`}
+          >
+            🌍 Pilih Zona Waktu
+          </label>
+          <select
+            id="timezone"
+            value={timezone}
+            onChange={(e) => setTimezone(e.target.value)}
+            className={`px-4 py-2 rounded-lg border text-sm font-medium shadow-sm focus:outline-none transition-all duration-300 ${
+              darkMode
+                ? "bg-gray-800 border-gray-600 text-white hover:bg-gray-700"
+                : "bg-white border-gray-300 text-gray-800 hover:bg-gray-50"
+            }`}
+          >
+            <option value="Asia/Jakarta">Asia/Jakarta (WIB)</option>
+            <option value="Asia/Makassar">Asia/Makassar (WITA)</option>
+            <option value="Asia/Jayapura">Asia/Jayapura (WIT)</option>
+            <option value="Asia/Tokyo">Asia/Tokyo</option>
+            <option value="Europe/London">Europe/London</option>
+            <option value="America/New_York">America/New_York</option>
+            <option value="Australia/Sydney">Australia/Sydney</option>
+          </select>
+        </div>
       </div>
 
       <Footer darkMode={darkMode} />
