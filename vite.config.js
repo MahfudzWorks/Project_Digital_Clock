@@ -3,6 +3,6 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/", // ⬅️ ini kunci
+  base: "/Project_Digital_Clock/",
   plugins: [tailwindcss(), react()],
 });
